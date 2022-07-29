@@ -1,12 +1,10 @@
 <header>
   <img
-    *ngIf="chuckFace"
-    src="assets/images/chuck.png"
-    alt="Chuck Norris with black hat and black sunglasses"
-    class="chuck" />
-  <img
-    *ngIf="!chuckFace"
-    src="assets/images/face.jpeg"
-    alt="Solid face icon"
-    class="face" />
+    [src]="chuckFace ? imageUrls.CHUCK_FACE : imageUrls.CHUCK_FACE"
+    [alt]="
+      chuckFace
+        ? 'Chuck Norris with black hat and black sunglasses'
+        : 'Solid face icon'
+    "
+    [ngClass]="{ chuck: chuckFace, face: !chuckFace }" />
 </header>

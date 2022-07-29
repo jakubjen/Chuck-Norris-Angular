@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ASSETS } from '../constants/assets';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() chuckFace: boolean = true;
-  constructor() {}
+  get imageUrls() {
+    return ASSETS;
+  }
 }
