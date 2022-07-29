@@ -1,0 +1,12 @@
+header {
+    text-align: center;
+    img {
+        &.chuck {
+            width: 100%;
+        }
+        &.face {
+            height: 130px;
+            max-width: 100%;
+        }
+    }
+}
