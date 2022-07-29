@@ -4,7 +4,7 @@
       type="text"
       id="name"
       [(ngModel)]="value"
-      [class]="{ 'not-empty': !!value }" />
+      [ngClass]="{ 'not-empty': !!value }" />
     <span class="text-label">{{ label }}</span>
   </label>
 </div>

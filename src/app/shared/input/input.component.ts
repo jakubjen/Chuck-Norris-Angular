@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class InputComponent {
   @Input() label = '';
-  name: string = '';
-  value: string = '';
-  constructor() {}
+  name = '';
+  value = '';
 }
