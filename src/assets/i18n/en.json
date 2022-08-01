@@ -4,10 +4,10 @@
     "DrawRandomJoke":"Draw a radom {name} joke",
     "ImpersonateChuckNorris":"Impersonate Chuck Norris",
     "Categories":"Categories",
-    "loading":"Loading",
-    "error": {
-        "request": "Chuck is on vacation. Try again later",
+    "Loading":"Loading",
+    "Error": {
+        "Request": "Chuck is on vacation. Try again later",
         "CounterRange": "You can pick a number from 1 to 100." ,
-        "required": "Required" 
+        "Required": "Required" 
     }
 }
