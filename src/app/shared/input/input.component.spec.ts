@@ -42,18 +42,16 @@ describe('InputComponent', () => {
   it('should have input and user should be able to change the value', () => {
     const input: HTMLInputElement =
       fixture.nativeElement.querySelector('input');
-    const spy = spyOn(component, 'handleTyping');
+    const handleTypingSpy = spyOn(component, 'handleTyping');
     input.value = 'Super title';
     input.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    expect(spy).toHaveBeenCalled();
+    expect(handleTypingSpy).toHaveBeenCalled();
   });
 
   it('should have input and input should have name equal to name @input', () => {
     const input: HTMLInputElement =
       fixture.nativeElement.querySelector('input');
-    console.log(input);
-
     expect(input.name === testData.name).toBeTrue();
   });
 
@@ -70,7 +68,6 @@ describe('InputComponent', () => {
   it('should have text-label and text should be equal to label @input ', () => {
     const label: HTMLElement =
       fixture.nativeElement.querySelector('.text-label');
-    console.log(label.innerText);
     expect(label.innerText === testData.label).toBeTrue();
   });
 });

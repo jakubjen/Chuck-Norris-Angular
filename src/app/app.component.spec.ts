@@ -23,7 +23,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     const container = fixture.nativeElement.querySelector('.container');
-    expect(container).not.toBeNull();
+    expect(container).toBeTruthy();
   });
 
   it(`should have container and container shouldn't be empty'`, () => {
