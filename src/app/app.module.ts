@@ -1,15 +1,16 @@
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './header/header.component';
+import { FormsModule } from '@angular/forms';
 import {
   TranslateLoader,
   TranslateModule,
   TranslateCompiler,
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -17,11 +18,12 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     SharedModule,
     HttpClientModule,
+    FormsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       compiler: {

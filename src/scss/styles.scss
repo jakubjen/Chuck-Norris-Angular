@@ -22,11 +22,19 @@
   src: url("https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=3.19") format("woff2");
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  background-color: Variables.$gray-2;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
   color: Variables.$dark;
 }

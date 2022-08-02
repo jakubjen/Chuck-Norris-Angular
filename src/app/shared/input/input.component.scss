@@ -1,0 +1,43 @@
+
+@use 'Variables';
+.text-input-wrapper {
+    position: relative;
+    margin-top: Variables.$margin-top;
+
+    .text-label {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        color: Variables.$gray-1;
+        transform: translateY(-50%);
+        font-size: .8em;
+        transition: transform ease-in-out 0.2s, font-size ease-in-out 0.2s;
+        cursor: text;
+        pointer-events: none;
+      }
+
+      & input:focus ~ .text-label, & input.not-empty  ~ .text-label {
+        color:  Variables.$gray-1;
+        transform: translateY(-22px);
+        font-size: .85rem;
+      }
+
+     & input {
+        font-size: .9em;
+        width: 100%;
+        padding: 32px 20px 12px 20px;
+        color: Variables.$dark;
+        transition: color 0.2s ease-in;
+        border: solid 2px Variables.$gray-1;
+        border-radius: Variables.$border-radius;
+        transition: border-color 0.2s ease-in;
+        outline: none;
+        &:hover, &:focus{
+            border: solid 2px Variables.$dark;
+          }  
+        }
+
+      &:hover .text-label {
+        color: Variables.$dark;
+      }
+}

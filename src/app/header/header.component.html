@@ -1,0 +1,10 @@
+<header>
+  <img
+    [src]="chuckFace ? imageUrls.CHUCK_FACE : imageUrls.FACE_ICON"
+    [alt]="
+      chuckFace
+        ? 'Chuck Norris with black hat and black sunglasses'
+        : 'Solid face icon'
+    "
+    [ngClass]="chuckFace ? 'chuck' : 'face'" />
+</header>

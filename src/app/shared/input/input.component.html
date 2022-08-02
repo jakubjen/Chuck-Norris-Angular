@@ -1,0 +1,10 @@
+<div class="text-input-wrapper">
+  <label [htmlFor]="name">
+    <input
+      type="text"
+      id="name"
+      [(ngModel)]="value"
+      [ngClass]="{ 'not-empty': !!value }" />
+    <span class="text-label">{{ label }}</span>
+  </label>
+</div>
