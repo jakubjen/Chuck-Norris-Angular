@@ -10,4 +10,10 @@ export class InputComponent {
   @Input() name = '';
   @Input() value = '';
   @Output() valueChange = new EventEmitter<string>();
+
+  handleTyping(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
+    this.valueChange.emit(value);
+  }
 }
