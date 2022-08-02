@@ -19,13 +19,17 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('chuck-norris-angular');
   });
-
-  it('should render title', () => {
+  it(`should have container'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'chuck-norris-angular app is running!'
-    );
+    const app = fixture.componentInstance;
+    const container = fixture.nativeElement.querySelector('.container');
+    expect(container).not.toBeNull();
+  });
+
+  it(`should have container and container shouldn't be empty'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const container = fixture.nativeElement.querySelector('.container');
+    expect(container.innerHTML).not.toBe('');
   });
 });

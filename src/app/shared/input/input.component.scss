@@ -27,10 +27,9 @@
         width: 100%;
         padding: 32px 20px 12px 20px;
         color: Variables.$dark;
-        transition: color 0.2s ease-in;
         border: solid 2px Variables.$gray-1;
         border-radius: Variables.$border-radius;
-        transition: border-color 0.2s ease-in;
+        transition: border-color 0.2s ease-in-out;
         outline: none;
         &:hover, &:focus{
             border: solid 2px Variables.$dark;

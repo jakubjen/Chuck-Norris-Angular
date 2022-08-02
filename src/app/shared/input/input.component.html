@@ -2,9 +2,12 @@
   <label [htmlFor]="name">
     <input
       type="text"
-      id="name"
-      [(ngModel)]="value"
-      [ngClass]="{ 'not-empty': !!value }" />
+      [id]="name + 'id'"
+      [name]="name"
+      [value]="value"
+      (input)="handleTyping($event)"
+      [ngClass]="{ 'not-empty': !!value }"
+      autocomplete="off" />
     <span class="text-label">{{ label }}</span>
   </label>
 </div>
