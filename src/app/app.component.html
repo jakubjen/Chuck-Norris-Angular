@@ -3,5 +3,8 @@
   <app-input
     label="Impersonate Chuck Norris"
     name="name"
-    [(value)]="value"></app-input>
+    [(value)]="name"></app-input>
+  <app-button
+    [buttonText]="'DrawRandomJoke' | translate: { name }"
+    (click)="DrawRandomJoke()"></app-button>
 </div>
