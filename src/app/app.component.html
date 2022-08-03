@@ -4,4 +4,6 @@
     label="Impersonate Chuck Norris"
     name="name"
     [(value)]="value"></app-input>
+  <app-counter [value]="jokes" (valueChange)="jokes = $event"></app-counter>
+  {{ jokes }}
 </div>

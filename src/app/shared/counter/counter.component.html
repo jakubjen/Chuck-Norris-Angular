@@ -1,0 +1,8 @@
+<div class="counter">
+  <button class="minus" (click)="DecreesValue()">-</button>
+  <input
+    type="number"
+    [value]="value"
+    (input)="HandleNumberInputChange($event)" />
+  <button class="plus" (click)="IncreaseValue()">+</button>
+</div>
