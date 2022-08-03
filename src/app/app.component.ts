@@ -8,7 +8,4 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   name = '';
-  DrawRandomJoke() {
-    alert();
-  }
 }
