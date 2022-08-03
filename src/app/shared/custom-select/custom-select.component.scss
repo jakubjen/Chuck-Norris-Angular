@@ -1,0 +1,99 @@
+@use 'Variables';
+.custom-selector-wrapper {
+    position: relative;
+    border: solid 2px Variables.$gray-1;
+    border-radius: Variables.$border-radius;
+    background: Variables.$white;
+    transition: border-color .2s ease-in;
+    font-size: 0.8em;
+    transition: border-color 0.2s ease-in-out;
+    user-select: none;
+
+    &.not-empty {
+        border-color: Variables.$dark;
+    }
+
+    &:hover, &.open {
+        border-color: Variables.$dark;
+    }
+
+    fieldset {
+        width: 100%;
+        border: none;
+
+        legend {
+            width: 100%;;
+
+            button {
+                padding: 22px 20px;
+                width: 100%;
+                border: none;
+                color: Variables.$gray-1;
+                background: Variables.$white;
+                border-radius: Variables.$border-radius;
+                cursor: pointer;
+                font-size: .9rem;
+                text-align: left;
+
+                &:hover {
+                    color: Variables.$dark;
+                }
+            }
+        }
+
+        .options {
+            position: absolute;
+            z-index: 100;
+            top: 50px;
+            left: -2px;
+            width: 100%;
+            background: Variables.$white;
+            border-radius: 0  0 Variables.$border-radius Variables.$border-radius;
+            border: solid 2px Variables.$dark;
+            box-sizing: content-box;
+            border-top: none;
+            padding: 10px 0;
+            font-size: .8rem;
+
+            label {
+                display: block;
+                span {
+                    display: block;
+                    padding: 22px 25px;
+                    margin: 5px 10px;
+                    border-radius: Variables.$border-radius;
+                    color: Variables.$dark;
+                    cursor: pointer;
+
+                    &:hover, &:focus {
+                        background: Variables.$gray-1;
+                    }
+
+                }
+
+                input[type="checkbox"]:focus-visible ~ span {
+                    background: Variables.$gray-1;
+                    color: Variables.$dark;
+                }
+
+                input[type="checkbox"]:checked ~ span {
+                    background: Variables.$dark;
+                    color: Variables.$white;
+                }
+
+                input[type="checkbox"]:checked:focus-visible ~ span {
+                    opacity: .8;
+                }
+
+                input[type=checkbox]{
+                    position: absolute;
+                    left: -9999999999999px;
+                }
+            }
+        }
+    }
+
+    &.not-empty fieldset legend button {
+        color: Variables.$dark;
+    }
+}

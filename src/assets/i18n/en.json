@@ -3,7 +3,7 @@
     "DownloadError":"Something goes wrong. Try again later",
     "DrawRandomJoke":"Draw a radom {name} joke",
     "ImpersonateChuckNorris":"Impersonate Chuck Norris",
-    "Categories":"Categories",
+    "SelectCategory":"Select category",
     "Loading":"Loading",
     "Error": {
         "Request": "Chuck is on vacation. Try again later",
