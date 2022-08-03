@@ -10,6 +10,7 @@ export class CounterComponent {
   @Output() valueChange = new EventEmitter();
   @Input() max = 100;
   @Input() min = 1;
+  @Input() error = false;
 
   IncreaseValue(): void {
     if (this.value >= this.max) {
