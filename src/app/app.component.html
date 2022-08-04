@@ -8,4 +8,8 @@
     [placeholder]="'SelectCategory' | translate"
     [options]="options"
     (selected)="selectedCategories = $event"></app-custom-select>
+    <app-button
+    [buttonText]="
+      'DrawRandomJoke' | translate: { name: name || 'Chuck Norris' }
+    "></app-button>
 </div>

@@ -5,10 +5,11 @@ import { InputComponent } from './input/input.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { CustomSelectComponent } from './custom-select/custom-select.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
-  declarations: [InputComponent, CustomSelectComponent],
+  declarations: [InputComponent, CustomSelectComponent, ButtonComponent],
   imports: [CommonModule, FormsModule, TranslateModule, MatIconModule],
-  exports: [InputComponent, CustomSelectComponent],
+  exports: [InputComponent, CustomSelectComponent, ButtonComponent],
 })
 export class SharedModule {}

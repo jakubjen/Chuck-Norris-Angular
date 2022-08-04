@@ -11,4 +11,5 @@ export class AppComponent {
   title = 'chuck-norris-angular';
   selectedCategories: string[] = [];
   options = ['dog', 'cat', 'bear'];
+   name = '';
 }
