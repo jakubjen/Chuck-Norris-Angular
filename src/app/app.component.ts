@@ -7,6 +7,5 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  value = '';
-  title = 'chuck-norris-angular';
+  name = '';
 }
