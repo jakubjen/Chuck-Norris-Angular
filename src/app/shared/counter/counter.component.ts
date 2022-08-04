@@ -7,31 +7,22 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CounterComponent {
   @Input() value = 0;
-  @Output() valueChange = new EventEmitter();
   @Input() max = 100;
   @Input() min = 1;
   @Input() error = false;
+  @Output() valueChange = new EventEmitter<number>();
 
-  IncreaseValue(): void {
-    if (this.value >= this.max) {
-      this.value = this.max;
-    } else {
-      this.value += 1;
-    }
+  increaseValue(): void {
+    this.value = this.value < this.max ? this.value + 1 : this.max;
     this.valueChange.next(this.value);
   }
-  DecreesValue(): void {
-    if (this.value <= this.min) {
-      this.value = this.min;
-    } else {
-      this.value += -1;
-    }
+  decreesValue(): void {
+    this.value = this.value > 1 ? this.value - 1 : this.min;
     this.valueChange.next(this.value);
   }
 
-  HandleNumberInputChange(event: Event): void {
-    const newValue = Number((event.target as HTMLInputElement).value);
-    this.value = newValue;
+  handleNumberInputChange(event: Event): void {
+    this.value = Number((event.target as HTMLInputElement).value);
     this.valueChange.emit(this.value);
   }
 }
