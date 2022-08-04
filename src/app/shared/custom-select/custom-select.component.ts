@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class CustomSelectComponent {
   @Input() options: string[] = [];
   @Input() placeholder = '';
-  @Output() selected = new EventEmitter();
+  @Output() selected = new EventEmitter<string[]>();
   selectedOptions: string[] = [];
   open = false;
 
@@ -20,7 +20,7 @@ export class CustomSelectComponent {
         optionForLoop => optionForLoop !== option
       );
     }
-    this.selected.next(this.selectedOptions);
+    this.selected.emit(this.selectedOptions);
   }
 
   get ButtonText(): string {
