@@ -7,5 +7,9 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  name = '';
+  value = '';
+  title = 'chuck-norris-angular';
+  selectedCategories: string[] = [];
+  options = ['dog', 'cat', 'bear'];
+   name = '';
 }
