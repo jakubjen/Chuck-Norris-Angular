@@ -9,7 +9,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   value = '';
   title = 'chuck-norris-angular';
+  jokes = 1;
   selectedCategories: string[] = [];
   options = ['dog', 'cat', 'bear'];
    name = '';
-}
+ }

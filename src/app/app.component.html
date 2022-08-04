@@ -12,4 +12,8 @@
     [buttonText]="
       'DrawRandomJoke' | translate: { name: name || 'Chuck Norris' }
     "></app-button>
+      <app-counter
+    [value]="jokes"
+    (valueChange)="jokes = $event"
+    [error]="true"></app-counter>
 </div>

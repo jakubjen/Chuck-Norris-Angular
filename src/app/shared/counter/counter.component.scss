@@ -1,0 +1,55 @@
+@use 'Variables';
+@use 'BreakPoint';
+
+.counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: Variables.$gray-2;
+    padding: 16px 20px;
+    border-radius: Variables.$border-radius;
+
+    &.error {
+        background: Variables.$red-error;
+    }
+
+    button {
+        background: transparent;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        border: solid 2px Variables.$dark;
+        font-size: 1.3rem;
+        transition: opacity .2 ease-in;
+
+        &:hover {
+          opacity: .6;
+        }
+
+        &.plus {
+            padding-top: 1px;
+        }
+
+        &.minus {
+            padding-bottom: 1px;
+        }
+    }
+
+    input {
+        background: transparent;
+        display: block;
+        flex-basis: 60%;
+        height: 35px;
+        text-align: center;
+        border: none;
+        outline: none;
+        -moz-appearance: textfield;
+        color: Variables.$dark;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+}
