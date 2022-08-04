@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { JokeService } from './services/joke.service';
 
 @Component({
   selector: 'app-root',
