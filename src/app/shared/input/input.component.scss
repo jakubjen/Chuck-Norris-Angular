@@ -19,7 +19,7 @@
       & input:focus ~ .text-label, & input.not-empty  ~ .text-label {
         color:  Variables.$gray-1;
         transform: translateY(-22px);
-        font-size: .85rem;
+        font-size: .75rem;
       }
 
      & input {

@@ -1,7 +1,25 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-custom-select',
+  animations: [
+    trigger('openClose', [
+      state(
+        'void',
+        style({
+          height: 0,
+        })
+      ),
+      transition('void <=> *', [animate('0.3s ease-in-out')]),
+    ]),
+  ],
   templateUrl: './custom-select.component.html',
   styleUrls: ['./custom-select.component.scss'],
 })

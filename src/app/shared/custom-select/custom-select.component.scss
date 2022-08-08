@@ -70,7 +70,8 @@
             border-top: none;
             padding: 10px 0;
             font-size: .8rem;
-
+            overflow-y: clip;
+            
             label {
                 display: block;
                 span {
@@ -80,11 +81,11 @@
                     border-radius: Variables.$border-radius;
                     color: Variables.$dark;
                     cursor: pointer;
+                    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
 
                     &:hover, &:focus {
                         background: Variables.$gray-1;
                     }
-
                 }
 
                 input[type="checkbox"]:focus-visible ~ span {
