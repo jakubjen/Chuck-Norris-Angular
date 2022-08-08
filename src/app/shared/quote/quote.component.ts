@@ -9,7 +9,5 @@ import { Observable } from 'rxjs';
 export class QuoteComponent {
   @Input() quote: string = '';
   @Input() error: boolean = false;
-  @Input() errorText: string = '';
   @Input() pending: boolean = true;
-  @Input() pendingText: string = '';
 }

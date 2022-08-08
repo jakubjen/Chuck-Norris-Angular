@@ -1,8 +1,8 @@
 <div class="quote">
   <p *ngIf="!!quote && !error && !pending">{{ quote }}</p>
-  <p *ngIf="error">{{ errorText }}</p>
+  <p *ngIf="error">{{ 'Error.Request' | translate }}</p>
   <p *ngIf="pending && !error">
-    {{ pendingText }} <br />
+    {{ 'Loading' | translate }} <br />
     <app-spinner [center]="true"></app-spinner>
   </p>
 </div>

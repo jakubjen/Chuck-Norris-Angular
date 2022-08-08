@@ -1,11 +1,6 @@
 <div class="container">
   <app-header [chuckFace]="true"></app-header>
-  <app-quote
-    quote="Test data"
-    [pending]="false"
-    [pendingText]="'Loading' | translate"
-    [error]="false"
-    [errorText]="'Error.Request' | translate"></app-quote>
+  <app-quote quote="Test data" [pending]="false" [error]="false"></app-quote>
   <app-input
     label="Impersonate Chuck Norris"
     name="name"
