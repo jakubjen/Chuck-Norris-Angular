@@ -1,0 +1,30 @@
+<div
+  class="custom-selector-wrapper"
+  [ngClass]="{open, 'not-empty': !!selectedOptions.length}"
+  appClickOutSideDirective
+  (clickOutSide)="close()">
+  <fieldset>
+    <legend>
+      <button (click)="open = !open">
+        {{ !selectedOptions.length ? placeholder : (ButtonText | titlecase) }}
+      </button>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Expand"
+        fontIcon="expand_more"
+        class="arrow"></mat-icon>
+    </legend>
+    <div class="options" *ngIf="open" [@openClose]="open">
+      <label
+        *ngFor="let option of options"
+        [htmlFor]="'custom-select' + option">
+        <input
+          [id]="'custom-select' + option"
+          type="checkbox"
+          [checked]="selectedOptions.includes(option)"
+          (change)="toggleSelection(option)" />
+        <span>{{ option | titlecase }}</span>
+      </label>
+    </div>
+  </fieldset>
+</div>

@@ -1,0 +1,8 @@
+<div class="counter" [ngClass]="{error}">
+  <button class="minus" (click)="decreesValue()">-</button>
+  <input
+    type="number"
+    [value]="value"
+    (input)="handleNumberInputChange($event)" />
+  <button class="plus" (click)="increaseValue()">+</button>
+</div>
