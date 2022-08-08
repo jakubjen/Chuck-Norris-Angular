@@ -12,7 +12,7 @@
         fontIcon="expand_more"
         class="arrow"></mat-icon>
     </legend>
-    <div class="options" *ngIf="open" [@openClose]="open ? 'open' : 'close'">
+    <div class="options" *ngIf="open" [@openClose]="open">
       <label
         *ngFor="let option of options"
         [htmlFor]="'custom-select' + option">
