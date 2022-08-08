@@ -26,4 +26,9 @@ describe('ButtonComponent', () => {
     const button = fixture.nativeElement.querySelector('button');
     expect(button.innerText === testButtonText).toBeTruthy();
   });
+
+  it('should have text of buttonText @input', () => {
+    const button = fixture.nativeElement.querySelector('button');
+    expect(button.innerText === testButtonText).toBeTruthy();
+  });
 });

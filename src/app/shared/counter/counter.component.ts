@@ -14,11 +14,11 @@ export class CounterComponent {
 
   increaseValue(): void {
     this.value = this.value < this.max ? this.value + 1 : this.max;
-    this.valueChange.next(this.value);
+    this.valueChange.emit(this.value);
   }
   decreesValue(): void {
-    this.value = this.value > 1 ? this.value - 1 : this.min;
-    this.valueChange.next(this.value);
+    this.value = this.value > this.min ? this.value - 1 : this.min;
+    this.valueChange.emit(this.value);
   }
 
   handleNumberInputChange(event: Event): void {

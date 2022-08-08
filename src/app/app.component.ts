@@ -12,5 +12,5 @@ export class AppComponent {
   jokes = 1;
   selectedCategories: string[] = [];
   options = ['dog', 'cat', 'bear'];
-   name = '';
- }
+  name = '';
+}
