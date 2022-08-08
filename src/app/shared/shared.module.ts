@@ -10,6 +10,7 @@ import { ButtonComponent } from './button/button.component';
 import { ClickOutSideDirective } from './clickOutSide/click-out-side.directive';
 import { QuoteComponent } from './quote/quote.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,13 @@ import { SpinnerComponent } from './spinner/spinner.component';
     QuoteComponent,
     SpinnerComponent,
   ],
-  imports: [CommonModule, FormsModule, TranslateModule, MatIconModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslateModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+  ],
   exports: [
     InputComponent,
     CustomSelectComponent,

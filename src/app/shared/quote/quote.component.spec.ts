@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TranslateTestingModule } from 'ngx-translate-testing';
 import { QuoteComponent } from './quote.component';
 
 describe('QuoteComponent', () => {
@@ -9,6 +9,7 @@ describe('QuoteComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [QuoteComponent],
+      imports: [TranslateTestingModule.withTranslations({})],
     }).compileComponents();
 
     fixture = TestBed.createComponent(QuoteComponent);
