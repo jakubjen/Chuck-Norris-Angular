@@ -1,6 +1,8 @@
 <div
   class="custom-selector-wrapper"
-  [ngClass]="{open, 'not-empty': !!selectedOptions.length}">
+  [ngClass]="{open, 'not-empty': !!selectedOptions.length}"
+  appClickOutSideDirective
+  (clickOutSide)="close()">
   <fieldset>
     <legend>
       <button (click)="open = !open">

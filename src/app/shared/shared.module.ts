@@ -7,10 +7,23 @@ import { CounterComponent } from './counter/counter.component';
 import { CustomSelectComponent } from './custom-select/custom-select.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from './button/button.component';
+import { ClickOutSideDirective } from './clickOutSide/click-out-side.directive';
 
 @NgModule({
-  declarations: [InputComponent, CustomSelectComponent, ButtonComponent, CounterComponent],
+  declarations: [
+    InputComponent,
+    CustomSelectComponent,
+    ButtonComponent,
+    CounterComponent,
+    ClickOutSideDirective,
+  ],
   imports: [CommonModule, FormsModule, TranslateModule, MatIconModule],
-  exports: [InputComponent, CustomSelectComponent, ButtonComponent, CounterComponent],
+  exports: [
+    InputComponent,
+    CustomSelectComponent,
+    ButtonComponent,
+    CounterComponent,
+    ClickOutSideDirective,
+  ],
 })
 export class SharedModule {}

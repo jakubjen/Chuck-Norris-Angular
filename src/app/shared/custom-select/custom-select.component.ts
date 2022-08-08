@@ -23,6 +23,10 @@ export class CustomSelectComponent {
     this.selected.emit(this.selectedOptions);
   }
 
+  close(): void {
+    this.open = false;
+  }
+
   get ButtonText(): string {
     return this.selectedOptions.join(', ');
   }
