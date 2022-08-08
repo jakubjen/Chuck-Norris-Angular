@@ -66,11 +66,9 @@ describe('CustomSelectComponent', () => {
     checkboxes[0].triggerEventHandler('change');
     fixture.detectChanges();
     expect(component.selectedOptions.includes(options[0])).toBeTruthy();
-    console.log(component.selectedOptions);
 
     checkboxes[0].triggerEventHandler('change');
     fixture.detectChanges();
-    console.log(component.selectedOptions);
     expect(!component.selectedOptions.includes(options[0])).toBeTruthy();
   });
 });
