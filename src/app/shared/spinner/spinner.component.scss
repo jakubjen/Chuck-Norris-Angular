@@ -1,0 +1,17 @@
+@use 'Variables';
+.spinner {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: solid 5px Variables.$dark;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

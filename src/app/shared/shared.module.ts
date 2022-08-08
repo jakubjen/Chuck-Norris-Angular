@@ -8,6 +8,8 @@ import { CustomSelectComponent } from './custom-select/custom-select.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from './button/button.component';
 import { ClickOutSideDirective } from './clickOutSide/click-out-side.directive';
+import { QuoteComponent } from './quote/quote.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { ClickOutSideDirective } from './clickOutSide/click-out-side.directive';
     ButtonComponent,
     CounterComponent,
     ClickOutSideDirective,
+    QuoteComponent,
+    SpinnerComponent,
   ],
   imports: [CommonModule, FormsModule, TranslateModule, MatIconModule],
   exports: [
@@ -24,6 +28,8 @@ import { ClickOutSideDirective } from './clickOutSide/click-out-side.directive';
     ButtonComponent,
     CounterComponent,
     ClickOutSideDirective,
+    QuoteComponent,
+    SpinnerComponent,
   ],
 })
 export class SharedModule {}
