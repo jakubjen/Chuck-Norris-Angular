@@ -17,7 +17,7 @@ export class CounterComponent {
     this.valueChange.emit(this.value);
   }
   decreesValue(): void {
-    this.value = this.value > 1 ? this.value - 1 : this.min;
+    this.value = this.value > this.min ? this.value - 1 : this.min;
     this.valueChange.emit(this.value);
   }
 
