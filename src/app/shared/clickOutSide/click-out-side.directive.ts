@@ -1,45 +1,23 @@
-import { DOCUMENT } from '@angular/common';
 import {
-  AfterViewInit,
   Directive,
   ElementRef,
   EventEmitter,
-  Inject,
-  OnDestroy,
+  HostListener,
   Output,
 } from '@angular/core';
-import { filter, fromEvent, Subscription } from 'rxjs';
 
 @Directive({
-  selector: '[appClickOutSide]',
+  selector: '[appClickOutSideDirective]',
 })
-export class ClickOutSideDirective implements AfterViewInit, OnDestroy {
-  @Output() clickOutside = new EventEmitter<void>();
-  documentClickSubscription: Subscription | undefined;
+export class ClickOutSideDirective {
+  @Output() clickOutSide: EventEmitter<MouseEvent> = new EventEmitter();
 
-  constructor(
-    private element: ElementRef,
-    @Inject(DOCUMENT) private document: Document
-  ) {}
-
-  ngOnDestroy(): void {
-    this.documentClickSubscription?.unsubscribe();
+  @HostListener('document:mousedown', ['$event'])
+  onClick(event: MouseEvent): void {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.clickOutSide.emit(event);
+    }
   }
 
-  ngAfterViewInit(): void {
-    this.documentClickSubscription = fromEvent(this.document, 'click')
-      .pipe(
-        filter(() => {
-          return !this.isInside(event?.target as HTMLElement);
-        })
-      )
-      .subscribe(() => this.clickOutside.emit());
-  }
-
-  isInside(elementToCheck: HTMLElement): boolean {
-    return (
-      elementToCheck === this.element.nativeElement ||
-      this.element.nativeElement.contains(elementToCheck)
-    );
-  }
+  constructor(private elementRef: ElementRef) {}
 }
