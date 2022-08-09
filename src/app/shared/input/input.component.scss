@@ -2,8 +2,7 @@
 @use 'Variables';
 .text-input-wrapper {
     position: relative;
-    margin-top: Variables.$margin-top;
-
+    
     .text-label {
         position: absolute;
         left: 20px;
