@@ -1,20 +1,43 @@
 <div class="container">
   <app-header [chuckFace]="true"></app-header>
-  <app-quote quote="Test data" [pending]="false" [error]="false"></app-quote>
-  <app-input
-    label="Impersonate Chuck Norris"
-    name="name"
-    [(value)]="value"></app-input>
+
+  <app-quote
+    [quote]="joke"
+    [pending]="jokePending"
+    [error]="jokeError"></app-quote>
+
   <app-custom-select
     [placeholder]="'SelectCategory' | translate"
     [options]="options"
     (selected)="selectedCategories = $event"></app-custom-select>
+
+  <app-input
+    label="Impersonate Chuck Norris"
+    name="name"
+    [(value)]="name"></app-input>
+
   <app-button
+    (click)="getJoke()"
     [buttonText]="
       'DrawRandomJoke' | translate: { name: name || 'Chuck Norris' }
     "></app-button>
-  <app-counter
-    [value]="jokes"
-    (valueChange)="jokes = $event"
-    [error]="false"></app-counter>
+
+  <div class="bottom-controls">
+    <div class="counter-wrapper">
+      <app-counter
+        [value]="numberOfJokes"
+        (valueChange)="handleCounterValueChanged($event)"
+        [error]="true"></app-counter>
+    </div>
+
+    <div class="button-wrapper">
+      <app-button
+        (click)="downloadJokes()"
+        [buttonText]="'SaveJoke' | translate: { count: numberOfJokes }"
+        [disable]="counterError"></app-button>
+    </div>
+  </div>
+  <div class="counter-error error" *ngIf="counterError">
+    {{ 'Error.CounterRange' | translate }}
+  </div>
 </div>
