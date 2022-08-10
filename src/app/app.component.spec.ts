@@ -49,9 +49,6 @@ describe('AppComponent', () => {
   });
 
   it('should have joke on startup', () => {
-    console.log(fixture.componentInstance.joke);
-    console.log(fixture.debugElement.query(By.css('arrow')));
-
     expect(component.joke).toBe(testJoke);
   });
 });
