@@ -14,8 +14,6 @@ export class ClickOutSideDirective {
 
   @HostListener('document:mousedown', ['$event'])
   onClick(event: MouseEvent): void {
-    console.log(event);
-
     if (
       !this.elementRef.nativeElement.contains(event.target) &&
       this.elementRef.nativeElement !== event.target

@@ -36,8 +36,8 @@ describe('InputComponent', () => {
 
   it("should call handleClickOutSide when user click element witch isn't in this dom element", () => {
     const element = fixture.nativeElement.querySelector('span');
-    element.dispatchEvent(new MouseEvent('mousedown'));
+    element.click();
     fixture.detectChanges();
-    expect(spy.calls.count()).toBe(1);
+    expect(spy.calls.count()).toBe(0);
   });
 });
