@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { forkJoin, max } from 'rxjs';
 import { JokeService } from './services/joke.service';
 
 @Component({
@@ -12,11 +13,16 @@ export class AppComponent {
   numberOfJokes = 1;
   selectedCategories: string[] = [];
   options = ['movie', 'travel'];
-  name = '';
   joke = '';
   jokePending = false;
   jokeError = false;
-  counterError = false;
+  drawJokeForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    categories: new FormControl([]),
+  });
+  downloadJokeForm: FormGroup = new FormGroup({
+    count: new FormControl(1, [Validators.min(1), Validators.max(100)]),
+  });
 
   constructor(private jokeService: JokeService) {
     this.getJoke();
@@ -25,7 +31,8 @@ export class AppComponent {
   getJoke(): void {
     if (this.jokePending) return;
     this.jokePending = true;
-    this.jokeService.fetchJoke(this.name, this.selectedCategories).subscribe({
+    const { name, categories } = this.drawJokeForm.value;
+    this.jokeService.fetchJoke(name, categories).subscribe({
       next: (joke: string) => {
         this.jokeError = false;
         this.joke = joke;
@@ -39,19 +46,10 @@ export class AppComponent {
     });
   }
 
-  handleCounterValueChanged(counterValue: number): void {
-    this.counterError = counterValue < 1 || counterValue > 100;
-    this.numberOfJokes = counterValue;
-  }
-
   downloadJokes(): void {
-    if (this.counterError) return;
+    const { name, categories } = this.drawJokeForm.value;
     forkJoin(
-      this.jokeService.fetchJokes(
-        this.name,
-        this.selectedCategories,
-        this.numberOfJokes
-      )
+      this.jokeService.fetchJokes(name, categories, this.numberOfJokes)
     ).subscribe({
       next(jokes) {
         var element = document.createElement('a');

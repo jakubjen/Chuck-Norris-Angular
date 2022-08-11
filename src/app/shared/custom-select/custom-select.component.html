@@ -5,7 +5,7 @@
   (clickOutSide)="close()">
   <fieldset>
     <legend>
-      <button (click)="open = !open">
+      <button (click)="toggleOpen()">
         {{ !selectedOptions.length ? placeholder : (ButtonText | titlecase) }}
       </button>
       <mat-icon

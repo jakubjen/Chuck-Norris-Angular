@@ -1,43 +1,48 @@
 <div class="container">
-  <app-header [chuckFace]="name === ''"></app-header>
-
+  <app-header [chuckFace]="drawJokeForm.value.name === ''"></app-header>
   <app-quote
     [quote]="joke"
     [pending]="jokePending"
     [error]="jokeError"></app-quote>
 
-  <app-custom-select
-    [placeholder]="'SelectCategory' | translate"
-    [options]="options"
-    (selected)="selectedCategories = $event"></app-custom-select>
+  <form [formGroup]="drawJokeForm" (ngSubmit)="getJoke()">
+    <app-custom-select
+      [placeholder]="'SelectCategory' | translate"
+      [options]="options"
+      formControlName="categories"></app-custom-select>
 
-  <app-input
-    label="Impersonate Chuck Norris"
-    name="name"
-    [(value)]="name"></app-input>
+    <app-input
+      label="Impersonate Chuck Norris"
+      name="name"
+      formControlName="name"></app-input>
+    <app-button
+      type="submit"
+      [buttonText]="
+        'DrawRandomJoke'
+          | translate: { name: drawJokeForm.value.name || 'Chuck Norris' }
+      "></app-button>
+  </form>
 
-  <app-button
-    (click)="getJoke()"
-    [buttonText]="
-      'DrawRandomJoke' | translate: { name: name || 'Chuck Norris' }
-    "></app-button>
-
-  <div class="bottom-controls">
+  <form
+    [formGroup]="downloadJokeForm"
+    class="bottom-controls"
+    (ngSubmit)="downloadJokes()">
     <div class="counter-wrapper">
       <app-counter
-        [value]="numberOfJokes"
-        (valueChange)="handleCounterValueChanged($event)"
-        [error]="counterError"></app-counter>
+        formControlName="count"
+        [error]="downloadJokeForm.invalid"></app-counter>
     </div>
 
     <div class="button-wrapper">
       <app-button
-        (click)="downloadJokes()"
-        [buttonText]="'SaveJoke' | translate: { count: numberOfJokes }"
-        [disable]="counterError"></app-button>
+        type="submit"
+        [disable]="downloadJokeForm.invalid"
+        [buttonText]="
+          'SaveJoke' | translate: { count: numberOfJokes }
+        "></app-button>
     </div>
-  </div>
-  <div class="counter-error error" *ngIf="counterError">
+  </form>
+  <div class="counter-error error" *ngIf="downloadJokeForm.invalid">
     {{ 'Error.CounterRange' | translate }}
   </div>
 </div>

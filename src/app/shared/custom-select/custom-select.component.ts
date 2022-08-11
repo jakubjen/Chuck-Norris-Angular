@@ -5,10 +5,18 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-select',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CustomSelectComponent),
+      multi: true,
+    },
+  ],
   animations: [
     trigger('openClose', [
       state(
@@ -23,12 +31,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './custom-select.component.html',
   styleUrls: ['./custom-select.component.scss'],
 })
-export class CustomSelectComponent {
+export class CustomSelectComponent implements ControlValueAccessor {
   @Input() options: string[] = [];
   @Input() placeholder = '';
-  @Output() selected = new EventEmitter<string[]>();
   selectedOptions: string[] = [];
   open = false;
+  onChange: any;
+  onBlur: any;
 
   toggleSelection(option: string): void {
     if (!this.selectedOptions.includes(option)) {
@@ -38,14 +47,31 @@ export class CustomSelectComponent {
         optionForLoop => optionForLoop !== option
       );
     }
-    this.selected.emit(this.selectedOptions);
+    this.onChange(this.selectedOptions);
   }
-
+  test() {
+    console.log('cos');
+  }
+  toggleOpen() {
+    this.open = !this.open;
+    if (this.open === false) this.onBlur();
+  }
   close(): void {
     this.open = false;
+    this.onBlur();
   }
 
   get ButtonText(): string {
     return this.selectedOptions.join(', ');
+  }
+
+  writeValue(value: string[]): void {
+    this.selectedOptions = value;
+  }
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onBlur = fn;
   }
 }

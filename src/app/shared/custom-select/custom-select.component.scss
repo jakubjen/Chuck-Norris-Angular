@@ -50,8 +50,9 @@
                 cursor: pointer;
                 font-size: .85rem;
                 text-align: left;
+                outline: none;
 
-                &:hover {
+                &:hover, &:focus {
                     color: Variables.$dark;
                 }
             }

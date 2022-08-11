@@ -1,12 +1,13 @@
 <div class="counter" [class.error]="error">
-  <button class="minus" (click)="decreesValue()">
+  <button class="minus" (click)="decreesValue()" type="button">
     <mat-icon aria-label="Minus" fontIcon="remove_circle_outline"></mat-icon>
   </button>
   <input
     type="number"
     [value]="value"
-    (input)="handleNumberInputChange($event)" />
-  <button class="plus" (click)="increaseValue()">
+    (input)="handleNumberInputChange($event)"
+    (blur)="onBlur($event)" />
+  <button class="plus" (click)="increaseValue()" type="button">
     <mat-icon aria-label="Plus" fontIcon="add_circle_outline"></mat-icon>
   </button>
 </div>
