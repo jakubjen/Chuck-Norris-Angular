@@ -8,7 +8,7 @@
   <form [formGroup]="drawJokeForm" (ngSubmit)="getJoke()">
     <app-custom-select
       [placeholder]="'SelectCategory' | translate"
-      [options]="options"
+      [options]="availableCategories"
       formControlName="categories"></app-custom-select>
 
     <app-input
@@ -38,7 +38,7 @@
         type="submit"
         [disable]="downloadJokeForm.invalid"
         [buttonText]="
-          'SaveJoke' | translate: { count: numberOfJokes }
+          'SaveJoke' | translate: { count: downloadJokeForm.value.count }
         "></app-button>
     </div>
   </form>

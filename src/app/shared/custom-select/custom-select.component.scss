@@ -71,7 +71,8 @@
             border-top: none;
             padding: 10px 0;
             font-size: .8rem;
-            overflow-y: clip;
+            overflow-y: auto;
+            max-height: 300px;
             
             label {
                 display: block;

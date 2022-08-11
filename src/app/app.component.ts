@@ -10,15 +10,13 @@ import { JokeService } from './services/joke.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  numberOfJokes = 1;
-  selectedCategories: string[] = [];
-  options = ['movie', 'travel'];
+  availableCategories: string[] = [];
   joke = '';
   jokePending = false;
   jokeError = false;
   drawJokeForm: FormGroup = new FormGroup({
     name: new FormControl(''),
-    categories: new FormControl([]),
+    selectedCategories: new FormControl([]),
   });
   downloadJokeForm: FormGroup = new FormGroup({
     count: new FormControl(1, [Validators.min(1), Validators.max(100)]),
@@ -26,13 +24,14 @@ export class AppComponent {
 
   constructor(private jokeService: JokeService) {
     this.getJoke();
+    this.getCategories();
   }
 
   getJoke(): void {
     if (this.jokePending) return;
     this.jokePending = true;
-    const { name, categories } = this.drawJokeForm.value;
-    this.jokeService.fetchJoke(name, categories).subscribe({
+    const { name, selectedCategories } = this.drawJokeForm.value;
+    this.jokeService.fetchJoke(name, selectedCategories).subscribe({
       next: (joke: string) => {
         this.jokeError = false;
         this.joke = joke;
@@ -46,10 +45,19 @@ export class AppComponent {
     });
   }
 
+  getCategories() {
+    this.jokeService.fetchCategories().subscribe({
+      next: value => {
+        this.availableCategories = value;
+      },
+    });
+  }
+
   downloadJokes(): void {
-    const { name, categories } = this.drawJokeForm.value;
+    const { name, selectedCategories } = this.drawJokeForm.value;
+    const { count } = this.downloadJokeForm.value;
     forkJoin(
-      this.jokeService.fetchJokes(name, categories, this.numberOfJokes)
+      this.jokeService.fetchJokes(name, selectedCategories, count)
     ).subscribe({
       next(jokes) {
         var element = document.createElement('a');

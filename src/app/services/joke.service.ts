@@ -24,6 +24,11 @@ export class JokeService {
     );
   }
 
+  public fetchCategories(): Observable<string[]> {
+    const url = CONFIGURATION.API_URL + '/categories';
+    return this.http.get<string[]>(url);
+  }
+
   public fetchJokes(name: string, category: string[], amount: number) {
     const jokes: Observable<string>[] = [];
     for (let i = 0; i < amount; i++) {
