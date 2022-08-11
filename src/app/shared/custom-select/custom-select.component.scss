@@ -28,6 +28,7 @@
         color: Variables.$dark;
         transition: transform .2s ease-in;
         color: Variables.$gray-1;
+        pointer-events: none;
     }
     &.open .arrow {
         transform: rotate(180deg);
@@ -41,7 +42,7 @@
             width: 100%;;
 
             button {
-                padding: 22px 20px;
+                padding: 22px 48px 22px 20px;
                 width: 100%;
                 border: none;
                 color: Variables.$gray-1;
@@ -51,7 +52,7 @@
                 font-size: .85rem;
                 text-align: left;
                 outline: none;
-
+                
                 &:hover, &:focus {
                     color: Variables.$dark;
                 }
@@ -61,7 +62,8 @@
         .options {
             position: absolute;
             z-index: 100;
-            top: 50px;
+            bottom: 6px;
+            transform: translateY(100%);
             left: -2px;
             width: 100%;
             background: Variables.$white;
