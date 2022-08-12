@@ -22,7 +22,9 @@ export class InputComponent implements ControlValueAccessor {
 
   handleTyping(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.value = target.value;
+    this.value = target.value
+      .replace(/Chuck/g, 'Chuc𝅷k')
+      .replace(/Norris/g, 'Nor𝅷ris');
     this.onChange(this.value);
   }
 
