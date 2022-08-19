@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { forkJoin, max } from 'rxjs';
 import { JokeService } from './services/joke.service';
 
 @Component({
@@ -9,23 +10,28 @@ import { JokeService } from './services/joke.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  numberOfJokes = 1;
-  selectedCategories: string[] = [];
-  options = ['movie', 'travel'];
-  name = '';
+  availableCategories: string[] = [];
   joke = '';
   jokePending = false;
   jokeError = false;
-  counterError = false;
+  drawJokeForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    selectedCategories: new FormControl([]),
+  });
+  downloadJokeForm: FormGroup = new FormGroup({
+    count: new FormControl(1, [Validators.min(1), Validators.max(100)]),
+  });
 
   constructor(private jokeService: JokeService) {
     this.getJoke();
+    this.getCategories();
   }
 
   getJoke(): void {
     if (this.jokePending) return;
     this.jokePending = true;
-    this.jokeService.fetchJoke(this.name, this.selectedCategories).subscribe({
+    const { name, selectedCategories } = this.drawJokeForm.value;
+    this.jokeService.fetchJoke(name, selectedCategories).subscribe({
       next: (joke: string) => {
         this.jokeError = false;
         this.joke = joke;
@@ -39,19 +45,19 @@ export class AppComponent {
     });
   }
 
-  handleCounterValueChanged(counterValue: number): void {
-    this.counterError = counterValue < 1 || counterValue > 100;
-    this.numberOfJokes = counterValue;
+  getCategories() {
+    this.jokeService.fetchCategories().subscribe({
+      next: value => {
+        this.availableCategories = value;
+      },
+    });
   }
 
   downloadJokes(): void {
-    if (this.counterError) return;
+    const { name, selectedCategories } = this.drawJokeForm.value;
+    const { count } = this.downloadJokeForm.value;
     forkJoin(
-      this.jokeService.fetchJokes(
-        this.name,
-        this.selectedCategories,
-        this.numberOfJokes
-      )
+      this.jokeService.fetchJokes(name, selectedCategories, count)
     ).subscribe({
       next(jokes) {
         var element = document.createElement('a');

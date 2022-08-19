@@ -1,23 +1,30 @@
 @use 'Variables';
 @use 'BreakPoint';
 .container {
-    position: relative;
-    background: Variables.$white;
-    width: 100%;
-    max-width: 560px;
-    box-shadow: rgba(0, 0, 0,.2) 2px 2px 8px;
-    padding: 20px 20px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: Variables.$margin-top;
-    justify-content: space-between;
+  position: relative;
+  background: Variables.$white;
+  width: 100vw;
+  max-width: 560px;
+  box-shadow: rgba(0, 0, 0,.2) 2px 2px 8px;
+  padding: 20px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: Variables.$margin-top;
+  justify-content: space-between;
 
-    @include BreakPoint.md {
-        & {
-          padding: 45px 60px 50px 60px;
-          border-radius: Variables.$border-radius;
-        }
+  @include BreakPoint.md {
+    & {
+      padding: 45px 60px 50px 60px;
+      border-radius: Variables.$border-radius;
       }
+    }
+    
+    form {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: Variables.$margin-top;
+    }
 
     .bottom-controls {
       display: flex;

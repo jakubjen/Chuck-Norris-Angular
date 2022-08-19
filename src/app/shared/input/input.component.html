@@ -6,6 +6,7 @@
       [name]="name"
       [value]="value"
       (input)="handleTyping($event)"
+      (onBlur)="(onBlur)"
       [ngClass]="{ 'not-empty': !!value }"
       autocomplete="off" />
     <span class="text-label">{{ label }}</span>
